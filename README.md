@@ -50,4 +50,15 @@ The approach for this project will involve the following steps:
 
 ## Modeling
 
+The project uses a time series linear regression model to forecast sales for the following month. The model is built using 71 weeks of sales data from Jan 2018 - May 2019. To build time series data, four lags of weekly sales prediction were added.a
+The model is trained on the historical data, and the coefficients are estimated using linear regression.
+
+Once the model is trained, it can be used to forecast sales for the following month. To do this, we first gather the relevant features for the next month, such as planned average promotions, average holidays, 4 weekly lags and number of orders per region. We then use these features to predict the sales for each day in the next month.
+
+The performance of the model is evaluated using a variety of metrics, including mean squared error (MSE) and root mean squared error (RMSE).
+
 ## Conclusion
+
+## Future Work
+
+In future work, we can explore the use of more advanced models such as ARIMA, LSTM, or Prophet to improve the accuracy of the sales forecasts. We can also investigate the use of additional features that may affect sales, such as competitor pricing and social media sentiment.
