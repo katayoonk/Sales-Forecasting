@@ -9,7 +9,7 @@ By accurately forecasting sales, WoMart can optimize its workforce and ensure th
 
 ## Data Description
 
-The [data](./data/source_data/TRAIN.csv) consists of 18 months sales data including the date, region code, store type, location type number of orders per day for each store and whether the day was holiday and any promotion deals were going on. 
+The [data](./data/source_data/TRAIN.csv) consists of 18 months sales data from January 2018 to MAy 2019, including the date, region code, store type, location type number of orders per day for each store and whether the day was holiday and any promotion deals were going on. Weekly data for each region has been build and used.
 
 ## Approach
 The approach for this project will involve the following steps:
