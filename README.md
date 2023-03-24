@@ -1,4 +1,5 @@
 # Group1-Project-5
+
 This project aims to develop a machine learning model that can forecast sales by region for the following month in order to assist in workforce optimization at WoMart. The data used for this project consists of historical sales data for different regions and products.
 
 ## Problem Statement
@@ -9,9 +10,10 @@ By accurately forecasting sales, WoMart can optimize its workforce and ensure th
 
 ## Data Description
 
-The [data](./data/source_data/TRAIN.csv) consists of 18 months sales data from January 2018 to MAy 2019, including the date, region code, store type, location type number of orders per day for each store and whether the day was holiday and any promotion deals were going on. Weekly data for each region has been build and used.
+The [data](./data/source_data/TRAIN.csv) consists of 18 months sales data from January 2018 to May 2019, including the date, region code, store type, location type number of orders per day for each store and whether the day was holiday and any promotion deals were going on. Weekly data for each region has been build and used.
 
 ## Approach
+
 The approach for this project will involve the following steps:
 
 - Data Preprocessing: Cleaning and preprocessing the data to prepare it for machine learning modeling.
@@ -55,9 +57,13 @@ The model is trained on the historical data, and the coefficients are estimated 
 
 Once the model is trained, it can be used to forecast sales for the following month. To do this, we first gather the relevant features for the next month, such as planned average promotions, average holidays, 4 weekly lags and number of orders per region. We then use these features to predict the sales for each day in the next month.
 
-The performance of the model is evaluated using a variety of metrics, including mean squared error (MSE) and root mean squared error (RMSE).
+The performance of the model is evaluated using a variety of metrics, including R-squared score and root mean squared error (RMSE).
 
 ## Conclusion
+
+![Sales Forecast](image/regional_forecasts.png)
+
+We were able to produce relatively good models for all 4 regions despite the limited data afforded us. As you can see in the graphs above, the predictions fall withing a tolerable range of error from the actual values. The model is able to capture the general trend of the data, and the error is not too large.
 
 ## Future Work
 
