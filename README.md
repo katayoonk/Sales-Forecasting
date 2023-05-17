@@ -10,7 +10,7 @@ By accurately forecasting sales, WoMart can optimize its workforce and ensure th
 
 ## Data Description
 
-The [data](./data/source_data/TRAIN.csv) consists of 18 months sales data from January 2018 to May 2019, including the date, region code, store type, location type number of orders per day for each store and whether the day was holiday and any promotion deals were going on. Weekly data for each region has been build and used.
+The ![data](https://www.kaggle.com/datasets/shelvigarg/sales-forecasting-womart-store/download?datasetVersionNumber=1) consists of 18 months sales data from January 2018 to May 2019, including the date, region code, store type, location type number of orders per day for each store and whether the day was holiday and any promotion deals were going on. Weekly data for each region has been build and used.
 
 ## Approach
 
@@ -52,18 +52,31 @@ The approach for this project will involve the following steps:
 
 ## Modeling
 
-The project uses a time series linear regression model to forecast sales for the following month. The model is built using 71 weeks of sales data from Jan 2018 - May 2019. To build time series data, four lags of weekly sales prediction were added.a
+The project uses a time series linear regression model to forecast sales for the following month. The model is built using 71 weeks of sales data from Jan 2018 - May 2019. To build time series data, four lags of weekly sales prediction were added. Variable lagging is a common practice in time series analysis. The idea is to add "lagged" versions of the dependent variable, in this case the sales data, to the model.
+We accomplish this by creating a new column for each lagged variable, and then shifting the data in the column by the number of periods we want to lag the variable.
+Since our data is separated into regions, we will need to separate the data into regions and then lag the data for each region separately.
+
+The daily data was converted to weekly and then reqrouped to four regions. Then the stationary factor for time series was checked.
 The model is trained on the historical data, and the coefficients are estimated using linear regression.
 
-Once the model is trained, it can be used to forecast sales for the following month. To do this, we first gather the relevant features for the next month, such as planned average promotions, average holidays, 4 weekly lags and number of orders per region. We then use these features to predict the sales for each day in the next month.
+Once the model is trained, it can be used to forecast sales for the following month. To do this, we first gather the relevant features for the next month, such as holidays and discount counts for each week, 4 weekly lags and number of orders per region. We then use these features to predict the sales for each day in the next month.
 
-The performance of the model is evaluated using a variety of metrics, including R-squared score and root mean squared error (RMSE).
+The performance of the model is evaluated using a variety of metrics, including mean squared error (MSE), root mean squared error (RMSE) and R2 score.
 
-## Conclusion
+## Results
 
-![Sales Forecast](image/regional_forecasts.png)
+Let's take a look at results!
+|Region | Train_R2 | Test_R2 | Train_RMSE | Test_RMSE |
+|---|---|---|---|---|
+|R1|0.7699|0.9461|2.4e+06|1.59e+06|
+|R2|0.7602|0.9021|1.64e+06|1.25e+06|
+|R3|0.7922|0.9560|1.49e+06|9.66e+05|
+|R4|0.7725|0.9510|8.17e+05|5.13e+05|
 
-We were able to produce relatively good models for all 4 regions despite the limited data afforded us. As you can see in the graphs above, the predictions fall withing a tolerable range of error from the actual values. The model is able to capture the general trend of the data, and the error is not too large.
+Let's take a look at predictions!
+![regional_forecasts](./image/regional_forecasts.png)
+
+We have a model that can predict the next month of data with shocking accuracy for its simplicity.
 
 ## Future Work
 
